@@ -1,0 +1,117 @@
+* {
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  min-width: 280px;
+  margin: 0;
+}
+
+header {
+  height: 30vh;
+  background-image: url("/images/header.avif");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+header div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+header div a {
+  text-decoration: none;
+  color: white;
+  text-shadow: 0px 0px 1px black;
+}
+header div a span {
+  font-weight: 700;
+  color: #c26b29;
+}
+
+main {
+  position: relative;
+  background: #121212;
+  min-height: 70vh;
+}
+main .searchbar {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 30px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  background: #2E2E2F;
+  box-shadow: 0px 2px 5px black;
+}
+main .searchbar label {
+  padding: 0 0.8em;
+  color: #A5A5A5;
+}
+main .searchbar input {
+  flex-grow: 2;
+  font-size: inherit;
+  border: none;
+  height: 100%;
+  background: #2E2E2F;
+  color: #A5A5A5;
+}
+main .searchbar input:focus {
+  outline: none;
+}
+main .searchbar button {
+  cursor: pointer;
+  width: 30%;
+  height: 100%;
+  font-size: inherit;
+  border: none;
+  background: #4B4B4B;
+  color: #FFF;
+  transition: all 2ms ease-in-out;
+  border-radius: 0 6px 6px 0;
+}
+main .searchbar button:focus {
+  outline: none;
+}
+main .searchbar button:active {
+  background-color: #121212;
+}
+main div.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+}
+main div.content div {
+  text-align: center;
+}
+main div.content div i {
+  color: #2E2E2F;
+  font-size: 3rem;
+}
+main div.content div p {
+  color: #2E2E2F;
+  margin: 0.2em 0;
+  font-weight: 700;
+}
+
+.active-tab {
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+.inactive-tab {
+  font-size: 0.7rem;
+}/*# sourceMappingURL=style.css.map */
