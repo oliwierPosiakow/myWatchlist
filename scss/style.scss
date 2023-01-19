@@ -93,8 +93,10 @@ main{
         margin: 0 auto;
         min-height: 70vh;
         max-width: 90%;
+        
         div{
             text-align: center;
+            
             i{
                 color:#2E2E2F;
                 font-size: 3rem;
@@ -110,73 +112,75 @@ main{
         }
         .movie{
             border-bottom: 1px solid #4B4B4B;
-            padding: 1em 0;
+            padding: 1.7em 0;
             display: grid;
             align-items: center;
             grid-template-areas: 
-            "poster . title rating . ."
+            "poster . title title title rating"
             "poster . time genre genre button"
             "poster . plot plot plot plot"
             ;
-            grid-template-columns: 1fr 10px 1fr 1fr 1fr;
+            grid-template-columns: 1fr 10px 2fr 2fr;
             grid-template-rows: 40px 30px 1fr;
             text-align: left;
+            color: white;
+
+            .title, .fa-star, .rate,
+            .watchtime, .genre, .film-btn,
+            .film-btn>i, .plot{
+                color: inherit;
+            }
+            .fa-star, .rate,
+            .watchtime, .genre, .film-btn,
+            .film-btn>i, .plot{
+                font-size: .5rem;
+            }
             .poster{
                 grid-area: poster;
                 width: 100px;
             }
             .title{
+                padding-right: .6em;
                 grid-area: title;
-                color: white;
-                font-size: .6rem;
+                font-size: .5rem;
                 margin: 0;
             }
             .fa-star{
+                margin: 0 5px;
                 grid-area: rating;
-                font-size: .5rem;
             }
             .rate{
+                margin: 0 2px;
                 grid-area: rating;
-                font-size: .5rem;
+                
                 display: inline-block;
             }
             .watchtime{
-                grid-area: time;
-                font-size: .5rem;
-                color: white;
-                
+                grid-area: time;  
+                font-weight: 400;
             }
             .genre{
                 grid-area: genre;
-                font-size: .5rem;
-                padding: 0 5px;
-                color: white;
+                font-weight: 400;
             }
             .film-btn{
                 grid-area: button;
                 width: 50px;
-                font-size: .5rem;
                 padding: 0;
                 background: none;
                 border: none;
-                color: white;
                 cursor: pointer;
                 i{
-                    color: white;
-                    font-size: .5rem;
                     margin-right: 5px;
                 }
             }
             .plot{
+                max-width: 170px;
                 font-weight: 300;
                 grid-area: plot;
-                font-size: .55rem;
-                color: white;
             }
-
         }
     } 
-    
 }
 
 //utility classes

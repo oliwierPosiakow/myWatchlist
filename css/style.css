@@ -110,64 +110,67 @@ main div.content .space {
 }
 main div.content .movie {
   border-bottom: 1px solid #4B4B4B;
-  padding: 1em 0;
+  padding: 1.7em 0;
   display: grid;
   align-items: center;
-  grid-template-areas: "poster . title rating . ." "poster . time genre genre button" "poster . plot plot plot plot";
-  grid-template-columns: 1fr 10px 1fr 1fr 1fr;
+  grid-template-areas: "poster . title title title rating" "poster . time genre genre button" "poster . plot plot plot plot";
+  grid-template-columns: 1fr 10px 2fr 2fr;
   grid-template-rows: 40px 30px 1fr;
   text-align: left;
+  color: white;
+}
+main div.content .movie .title, main div.content .movie .fa-star, main div.content .movie .rate,
+main div.content .movie .watchtime, main div.content .movie .genre, main div.content .movie .film-btn,
+main div.content .movie .film-btn > i, main div.content .movie .plot {
+  color: inherit;
+}
+main div.content .movie .fa-star, main div.content .movie .rate,
+main div.content .movie .watchtime, main div.content .movie .genre, main div.content .movie .film-btn,
+main div.content .movie .film-btn > i, main div.content .movie .plot {
+  font-size: 0.5rem;
 }
 main div.content .movie .poster {
   grid-area: poster;
   width: 100px;
 }
 main div.content .movie .title {
+  padding-right: 0.6em;
   grid-area: title;
-  color: white;
-  font-size: 0.6rem;
+  font-size: 0.5rem;
   margin: 0;
 }
 main div.content .movie .fa-star {
+  margin: 0 5px;
   grid-area: rating;
-  font-size: 0.5rem;
 }
 main div.content .movie .rate {
+  margin: 0 2px;
   grid-area: rating;
-  font-size: 0.5rem;
   display: inline-block;
 }
 main div.content .movie .watchtime {
   grid-area: time;
-  font-size: 0.5rem;
-  color: white;
+  font-weight: 400;
 }
 main div.content .movie .genre {
   grid-area: genre;
-  font-size: 0.5rem;
-  padding: 0 5px;
-  color: white;
+  font-weight: 400;
 }
 main div.content .movie .film-btn {
   grid-area: button;
   width: 50px;
-  font-size: 0.5rem;
   padding: 0;
   background: none;
   border: none;
-  color: white;
   cursor: pointer;
 }
 main div.content .movie .film-btn i {
-  color: white;
-  font-size: 0.5rem;
   margin-right: 5px;
 }
 main div.content .movie .plot {
+  max-width: 170px;
   font-weight: 300;
   grid-area: plot;
-  font-size: 0.55rem;
-  color: white;
 }
 
 .active-tab {
