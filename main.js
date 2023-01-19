@@ -5,6 +5,8 @@ const contentEl = document.querySelector('.content')
 
 
 
+//searchnig for a movie and then displaying the results
+
 document.querySelector('.search').addEventListener('click', async () =>{
     const inputVal = document.getElementById('input-el')
     const res = await fetch(`http://www.omdbapi.com/?apikey=44d65228&s=${inputVal.value}`)
@@ -19,12 +21,8 @@ document.querySelector('.search').addEventListener('click', async () =>{
         console.log(data.Poster)
 
         let poster = ''
-        if(data.Poster === 'N/A'){
-            poster = 'images/placeholder.jpg'
-        }
-        else{
-            poster = `${data.Poster}`
-        }
+        data.Poster === 'N/A' ? poster = 'images/placeholder.jpg' :  poster = `${data.Poster}`
+        
 
         filmHTML += `
             <div class="movie">
