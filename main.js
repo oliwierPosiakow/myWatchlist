@@ -19,14 +19,17 @@ document.querySelector('.search').addEventListener('click', async () =>{
         console.log(data.Poster)
 
         let poster = ''
-        if(data.Poster === 'N/A'){
+        if(data.Poster === 'N/A' || data.Poster === undefined){
             poster = 'images/placeholder.jpg'
         }
         else{
             poster = `${data.Poster}`
         }
-
-        filmHTML += `
+        if(data.Title === undefined){
+            filmHTML += ``
+        }
+        else{
+            filmHTML += `
             <div class="movie">
                 <img class="poster" src='${poster}'>
                 <h5 class="title">${data.Title}</h5>
@@ -37,6 +40,7 @@ document.querySelector('.search').addEventListener('click', async () =>{
                 <p class="plot">${data.Plot}</p>
             </div>
         `
+        }
     }
     inputVal.value = ''
     contentEl.innerHTML = filmHTML   
