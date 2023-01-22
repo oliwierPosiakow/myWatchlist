@@ -7,6 +7,7 @@
 body {
   min-width: 280px;
   margin: 0;
+  background-color: #121212;
 }
 
 header {
@@ -87,6 +88,10 @@ main .searchbar button:focus {
 }
 main .searchbar button:active {
   background-color: #121212;
+}
+main div.def-ph {
+  margin-top: 50%;
+  transform: translateY(-50%);
 }
 main div.content {
   margin: 0 auto;

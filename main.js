@@ -16,7 +16,6 @@ document.querySelector('.search').addEventListener('click', async () =>{
         console.log(title)
         const res = await fetch(`http://www.omdbapi.com/?apikey=44d65228&t=${title}`)
         const data = await res.json()
-        console.log(data.Poster)
 
         let poster = ''
         if(data.Poster === 'N/A' || data.Poster === undefined){
