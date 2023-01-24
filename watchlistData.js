@@ -1,3 +1,2 @@
-const watchlist = []
+export const watchlist = []
 
-export default watchlist

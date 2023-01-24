@@ -1,9 +1,11 @@
 //44d65228 API Key
 //Base: http://www.omdbapi.com/
 //Endpoints: ?apikey=44d65228&s=???
+import { watchlist } from "./watchlistData.js"
 const contentEl = document.querySelector('.content')
 const defDiv = document.querySelector('.def-ph')
 let loadedMovies = []
+let targetMovies = []
 
 document.querySelector('.search').addEventListener('click', async () =>{
     try{
@@ -36,7 +38,7 @@ document.querySelector('.search').addEventListener('click', async () =>{
                     <i class="fa-solid fa-star"><p class="rate">${data.imdbRating}</p></i>
                     <p class="watchtime">${data.Runtime}</p>
                     <p class="genre">${data.Genre}</p>
-                    <button class="film-btn" id="add-btn"><i class="fa-solid fa-circle-plus"></i>Watchlist</button>
+                    <button class="film-btn" id="add-btn" data-imdb = ${data.imdbID}><i class="fa-solid fa-circle-plus"></i>Watchlist</button>
                     <p class="plot">${data.Plot}</p>
                 </div>
             `
@@ -50,4 +52,14 @@ document.querySelector('.search').addEventListener('click', async () =>{
         contentEl.innerHTML = `<div class='no-results'><p>Unable to find what you’re looking for. Please try another search.</p></div>`
     }
 
+})
+
+document.addEventListener('click', (e)=>{
+    if(e.target.id === 'add-btn'){
+        targetMovies.push(loadedMovies.filter(movie => {
+            return movie.imdbID === e.target.dataset.imdb
+        }))
+        localStorage.setItem("watchlistMovies", JSON.stringify(targetMovies))
+        console.log(JSON.parse(localStorage.getItem('watchlistMovies')))
+    }
 })
