@@ -5,7 +5,7 @@ import { watchlist } from "./watchlistData.js"
 const contentEl = document.querySelector('.content')
 const defDiv = document.querySelector('.def-ph')
 let loadedMovies = []
-let targetMovies = []
+
 
 document.querySelector('.search').addEventListener('click', async () =>{
     try{
@@ -56,10 +56,16 @@ document.querySelector('.search').addEventListener('click', async () =>{
 
 document.addEventListener('click', (e)=>{
     if(e.target.id === 'add-btn'){
-        targetMovies.push(loadedMovies.filter(movie => {
+        let tempArr = []
+
+        const targetMovies = loadedMovies.filter(movie => {
             return movie.imdbID === e.target.dataset.imdb
-        }))
-        localStorage.setItem("watchlistMovies", JSON.stringify(targetMovies))
-        console.log(JSON.parse(localStorage.getItem('watchlistMovies')))
+        })
+        
+        if(localStorage.getItem('watchlistMovies')){
+            tempArr = JSON.parse(localStorage.getItem('watchlistMovies'))
+        }
+        tempArr.push(targetMovies)
+        localStorage.setItem('watchlistMovies',JSON.stringify(tempArr))
     }
 })
