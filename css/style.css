@@ -209,7 +209,7 @@ main div.content .movie .film-btn i {
   margin-right: 5px;
 }
 main div.content .movie .plot {
-  max-width: 170px;
+  max-width: 80%;
   font-weight: 300;
   grid-area: plot;
 }
