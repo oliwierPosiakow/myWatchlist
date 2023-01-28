@@ -1,5 +1,5 @@
-# myWathlist
- A project of a wathilist of films, and searchengine with OMD database.
+# myWatchlist
+ A project of a watchilist of films, and searchengine with OMD database.
  All this work is done for practice and self improvement in API, CSS and JS field.
  Enjoy :)
  
