@@ -8,6 +8,7 @@ const contentEl = document.querySelector('.content')
 //searchnig for a movie and then displaying the results
 
 document.querySelector('.search').addEventListener('click', async () =>{
+
     const inputVal = document.getElementById('input-el')
     const res = await fetch(`http://www.omdbapi.com/?apikey=44d65228&s=${inputVal.value}`)
     const data = await res.json()
@@ -15,15 +16,14 @@ document.querySelector('.search').addEventListener('click', async () =>{
 
     for(let film of data.Search){
         const title = film.Title
-        console.log(title)
         const res = await fetch(`http://www.omdbapi.com/?apikey=44d65228&t=${title}`)
         const data = await res.json()
-        console.log(data.Poster)
-
+        console.log(film)
+        //poster selection in case the poster is not in a database
         let poster = ''
-        data.Poster === 'N/A' ? poster = 'images/placeholder.jpg' :  poster = `${data.Poster}`
+        data.Poster === 'N/A' || data.Poster === undefined ? poster = 'images/placeholder.jpg' :  poster = `${data.Poster}`
         
-
+        //Creating a movie HTML scheme
         filmHTML += `
             <div class="movie">
                 <img class="poster" src='${poster}'>
