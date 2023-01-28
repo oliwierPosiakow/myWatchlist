@@ -91,32 +91,60 @@ main .searchbar button:focus {
 main .searchbar button:active {
   background-color: #121212;
 }
-main div.def-ph {
-  margin-top: 50%;
-  transform: translateY(-50%);
-}
 main div.no-results {
-  padding-top: 50%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 60vh;
 }
 main div.no-results p {
-  margin-top: 50%;
+  color: white;
 }
 main div.content {
   margin: 0 auto;
   min-height: 70vh;
   max-width: 90%;
 }
-main div.content div {
+main div.content div.def-ph {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
+  height: 60vh;
 }
-main div.content div i {
+main div.content div.def-ph i {
   color: #2E2E2F;
   font-size: 3rem;
 }
-main div.content div p {
+main div.content div.def-ph p {
   color: #2E2E2F;
   margin: 0.2em 0;
   font-weight: 700;
+}
+main div.content div.def-watchlist {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  color: #A5A5A5;
+  text-align: center;
+  height: 60vh;
+}
+main div.content div.def-watchlist p {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+}
+main div.content div.def-watchlist a {
+  text-decoration: none;
+  color: white;
+  font-weight: 700;
+  font-size: inherit;
+}
+main div.content div.def-watchlist i {
+  margin: 0 0.2em;
 }
 main div.content .space {
   height: 3vh;

@@ -38,18 +38,18 @@ header div a span {
   color: #c26b29;
 }
 
-.content .def-ph {
+.content .def-ph-wl {
   margin-top: 40%;
   transform: translateY(-50%);
   color: #A5A5A5;
   text-align: center;
 }
-.content .def-ph a {
+.content .def-ph-wl a {
   text-decoration: none;
   color: white;
   font-weight: 700;
 }
-.content .def-ph i {
+.content .def-ph-wl i {
   margin: 0 0.2em;
 }
 

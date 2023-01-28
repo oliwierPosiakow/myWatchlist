@@ -44,6 +44,8 @@ main{
     position: relative;
     background: #121212;
     min-height: 70vh;
+    
+
     .searchbar{
         position: absolute;
         top: -15px;
@@ -93,15 +95,16 @@ main{
             background-color: #121212;
         }
     }
-    div.def-ph{
-        margin-top: 50%;
-        transform: translateY(-50%);
-    }
+
     div.no-results{
-        padding-top: 50%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        height: 60vh;
         p{
-            
-            margin-top: 50%;
+            color: white;
         }
     }
     div.content{
@@ -109,9 +112,13 @@ main{
         min-height: 70vh;
         max-width: 90%;
         
-        div{
+        div.def-ph{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
-            
+            height: 60vh;
             i{
                 color:#2E2E2F;
                 font-size: 3rem;
@@ -122,6 +129,28 @@ main{
                 font-weight: 700;
             }
         }
+        div.def-watchlist{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            color: #A5A5A5;
+            text-align: center;
+            height: 60vh;
+            p{
+                margin-top: 0;
+                margin-bottom: .5em;
+            }
+            a{
+                text-decoration: none;
+                color: white;
+                font-weight: 700;
+                font-size: inherit;
+            }
+            i{
+                margin: 0 .2em
+            }
+        }  
         .space{
             height: 3vh;
         }

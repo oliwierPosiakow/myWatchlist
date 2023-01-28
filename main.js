@@ -1,11 +1,11 @@
 //44d65228 API Key
 //Base: http://www.omdbapi.com/
 //Endpoints: ?apikey=44d65228&s=???
-import { watchlist } from "./watchlistData.js"
 const contentEl = document.querySelector('.content')
 const defDiv = document.querySelector('.def-ph')
 let loadedMovies = []
 
+//find and render movies
 
 document.querySelector('.search').addEventListener('click', async () =>{
     try{
@@ -15,11 +15,13 @@ document.querySelector('.search').addEventListener('click', async () =>{
         const data = await res.json()
         let filmHTML = ''
         for(let film of data.Search){
+
             const title = film.Title
             const res = await fetch(`http://www.omdbapi.com/?apikey=44d65228&t=${title}`)
             const data = await res.json()
+
             loadedMovies.push(data)
-            console.log(data)
+            
             let poster = ''
             if(data.Poster === 'N/A' || data.Poster === undefined){
                 poster = 'images/placeholder.jpg'
@@ -27,6 +29,7 @@ document.querySelector('.search').addEventListener('click', async () =>{
             else{
                 poster = `${data.Poster}`
             }
+            
             if(data.Title === undefined){
                 filmHTML += ``
             }
@@ -49,10 +52,13 @@ document.querySelector('.search').addEventListener('click', async () =>{
         console.log(loadedMovies)     
     }
     catch (e){
+        console.log(e)
         contentEl.innerHTML = `<div class='no-results'><p>Unable to find what you’re looking for. Please try another search.</p></div>`
     }
 
 })
+
+//add movies to localStorage
 
 document.addEventListener('click', (e)=>{
     if(e.target.id === 'add-btn'){
@@ -65,7 +71,7 @@ document.addEventListener('click', (e)=>{
         if(localStorage.getItem('watchlistMovies')){
             tempArr = JSON.parse(localStorage.getItem('watchlistMovies'))
         }
-        tempArr.push(targetMovies)
+        tempArr.push(targetMovies[0])
         localStorage.setItem('watchlistMovies',JSON.stringify(tempArr))
     }
 })
