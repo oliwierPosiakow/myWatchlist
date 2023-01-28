@@ -7,6 +7,7 @@
 body {
   min-width: 280px;
   margin: 0;
+  background-color: #121212;
 }
 
 header {
@@ -30,6 +31,7 @@ header div a {
   text-decoration: none;
   color: white;
   text-shadow: 0px 0px 1px black;
+  position: relative;
 }
 header div a span {
   font-weight: inherit;
@@ -47,6 +49,7 @@ main .searchbar {
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
+  max-width: 500px;
   height: 30px;
   margin: 0 auto;
   display: flex;
@@ -87,6 +90,16 @@ main .searchbar button:focus {
 }
 main .searchbar button:active {
   background-color: #121212;
+}
+main div.def-ph {
+  margin-top: 50%;
+  transform: translateY(-50%);
+}
+main div.no-results {
+  padding-top: 50%;
+}
+main div.no-results p {
+  margin-top: 50%;
 }
 main div.content {
   margin: 0 auto;
@@ -179,5 +192,5 @@ main div.content .movie .plot {
 }
 
 .inactive-tab {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
 }/*# sourceMappingURL=style.css.map */
