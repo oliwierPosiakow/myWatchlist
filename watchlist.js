@@ -46,7 +46,7 @@ document.addEventListener('click',(e) =>{
             contentEL.innerHTML = `
                 <div class="def-watchlist">
                     <p>It looks like nothing is in here...</p> 
-                    <a href="main.html"><i class="fa-solid fa-circle-plus"></i> Find a movie to add</a>
+                    <a href="index.html"><i class="fa-solid fa-circle-plus"></i> Find a movie to add</a>
                 </div> 
             `
         }
