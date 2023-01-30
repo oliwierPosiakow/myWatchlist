@@ -8,6 +8,8 @@ let loadedMovies = []
 //find and render movies
 
 document.querySelector('.search').addEventListener('click', async () =>{
+    
+    contentEl.innerHTML = `<img src='./images/loading.svg' alt='Loading spinner' class='loading'>`
     try{
         loadedMovies = []
         const inputVal = document.getElementById('input-el')
@@ -41,6 +43,7 @@ document.querySelector('.search').addEventListener('click', async () =>{
                     <i class="fa-solid fa-star"><p class="rate">${data.imdbRating}</p></i>
                     <p class="watchtime">${data.Runtime}</p>
                     <p class="genre">${data.Genre}</p>
+                    <button class="film-btn hidden" id="remove-btn" data-imdb = ${data.imdbID}><i class="fa-solid fa-circle-minus"></i>Remove</button>
                     <button class="film-btn" id="add-btn" data-imdb = ${data.imdbID}><i class="fa-solid fa-circle-plus"></i>Watchlist</button>
                     <p class="plot">${data.Plot}</p>
                 </div>
@@ -52,7 +55,6 @@ document.querySelector('.search').addEventListener('click', async () =>{
         console.log(loadedMovies)     
     }
     catch (e){
-        console.log(e)
         contentEl.innerHTML = `<div class='no-results'><p>Unable to find what you’re looking for. Please try another search.</p></div>`
     }
 
@@ -63,15 +65,38 @@ document.querySelector('.search').addEventListener('click', async () =>{
 document.addEventListener('click', (e)=>{
     if(e.target.id === 'add-btn'){
         let tempArr = []
+        const addButtons = document.getElementsByClassName('film-btn')
+        const targetBtn = Object.values(addButtons).filter(btn => {
+            return btn.dataset.imdb === e.target.dataset.imdb
+        })
+        targetBtn[0].classList.toggle('hidden')
+        targetBtn[1].classList.toggle('hidden')
+        console.log(targetBtn)
 
         const targetMovies = loadedMovies.filter(movie => {
             return movie.imdbID === e.target.dataset.imdb
         })
+
         
         if(localStorage.getItem('watchlistMovies')){
             tempArr = JSON.parse(localStorage.getItem('watchlistMovies'))
         }
         tempArr.push(targetMovies[0])
         localStorage.setItem('watchlistMovies',JSON.stringify(tempArr))
+    }
+    if(e.target.id === 'remove-btn'){
+        const addButtons = document.getElementsByClassName('film-btn')
+        const targetBtn = Object.values(addButtons).filter(btn => {
+            return btn.dataset.imdb === e.target.dataset.imdb
+        })
+        const oldArr = JSON.parse(localStorage.getItem('watchlistMovies'))
+
+        targetBtn[0].classList.toggle('hidden')
+        targetBtn[1].classList.toggle('hidden')
+
+        const newArr = oldArr.filter(movie => {
+            return movie.imdbID != e.target.dataset.imdb
+        })
+        localStorage.setItem('watchlistMovies', JSON.stringify(newArr))
     }
 })
