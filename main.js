@@ -1,5 +1,5 @@
 //44d65228 API Key
-//Base: http://www.omdbapi.com/
+//Base: https://www.omdbapi.com/
 //Endpoints: ?apikey=44d65228&s=???
 const contentEl = document.querySelector('.content')
 const defDiv = document.querySelector('.def-ph')
