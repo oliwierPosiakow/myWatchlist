@@ -58,7 +58,7 @@ const fetchMovies = async () => {
 }
 document.querySelector('.search').addEventListener('click',fetchMovies)
 window.addEventListener('keydown', (e)=> {
-    if(e.code === 'Enter'){
+    if(e.code === 'Enter' && document.getElementById('input-el').value != ''){
         fetchMovies(e)
     }
 })
