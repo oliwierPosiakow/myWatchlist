@@ -8,6 +8,7 @@ body {
   min-width: 280px;
   margin: 0;
   background-color: #121212;
+  position: relative;
 }
 
 header {
@@ -38,14 +39,37 @@ header div a span {
   color: #c26b29;
 }
 
+div.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  background: rgb(75, 75, 75);
+  border-radius: 8px;
+  color: #A5A5A5;
+}
+div.modal p {
+  font-weight: 700;
+}
+div.modal i {
+  font-size: 2rem;
+}
+
 main {
-  position: relative;
   background: #121212;
   min-height: 70vh;
 }
 main .searchbar {
   position: absolute;
-  top: -15px;
+  top: 235px;
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
@@ -248,8 +272,37 @@ main div.content .loading {
   display: none;
 }
 
+.modal-animation {
+  -webkit-animation: showmodal 3s infinite;
+          animation: showmodal 3s infinite;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+}
+
 @media (min-width: 700px) {
   * {
     font-size: 25px;
+  }
+}
+@-webkit-keyframes showmodal {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes showmodal {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }/*# sourceMappingURL=style.css.map */

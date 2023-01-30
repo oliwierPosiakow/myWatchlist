@@ -66,6 +66,9 @@ document.addEventListener('click', (e)=>{
     if(e.target.id === 'add-btn'){
         let tempArr = []
         const addButtons = document.getElementsByClassName('film-btn')
+        const modal = document.querySelector('.modal')
+
+        //swap buttons
         const targetBtn = Object.values(addButtons).filter(btn => {
             return btn.dataset.imdb === e.target.dataset.imdb
         })
@@ -73,16 +76,23 @@ document.addEventListener('click', (e)=>{
         targetBtn[1].classList.toggle('hidden')
         console.log(targetBtn)
 
+        //get and set localStorage
         const targetMovies = loadedMovies.filter(movie => {
             return movie.imdbID === e.target.dataset.imdb
         })
 
-        
         if(localStorage.getItem('watchlistMovies')){
             tempArr = JSON.parse(localStorage.getItem('watchlistMovies'))
         }
         tempArr.push(targetMovies[0])
         localStorage.setItem('watchlistMovies',JSON.stringify(tempArr))
+
+
+        //fire modal
+        modal.classList.toggle('modal-animation')
+        setTimeout(()=>{
+            modal.classList.toggle('modal-animation')
+        },3000)
     }
     if(e.target.id === 'remove-btn'){
         const addButtons = document.getElementsByClassName('film-btn')
