@@ -6,9 +6,7 @@ const defDiv = document.querySelector('.def-ph')
 let loadedMovies = []
 
 //find and render movies
-
-document.querySelector('.search').addEventListener('click', async () =>{
-    
+const fetchMovies = async () => {
     contentEl.innerHTML = `<img src='./images/loading.svg' alt='Loading spinner' class='loading'>`
     try{
         loadedMovies = []
@@ -57,7 +55,12 @@ document.querySelector('.search').addEventListener('click', async () =>{
     catch (e){
         contentEl.innerHTML = `<div class='no-results'><p>Unable to find what you’re looking for. Please try another search.</p></div>`
     }
-
+}
+document.querySelector('.search').addEventListener('click',fetchMovies)
+window.addEventListener('keydown', (e)=> {
+    if(e.code === 'Enter'){
+        fetchMovies(e)
+    }
 })
 
 //add movies to localStorage
