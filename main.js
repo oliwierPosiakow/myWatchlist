@@ -13,13 +13,13 @@ document.querySelector('.search').addEventListener('click', async () =>{
     try{
         loadedMovies = []
         const inputVal = document.getElementById('input-el')
-        const res = await fetch(`http://www.omdbapi.com/?apikey=44d65228&s=${inputVal.value}`)
+        const res = await fetch(`https://www.omdbapi.com/?apikey=44d65228&s=${inputVal.value}`)
         const data = await res.json()
         let filmHTML = ''
         for(let film of data.Search){
 
             const title = film.Title
-            const res = await fetch(`http://www.omdbapi.com/?apikey=44d65228&t=${title}`)
+            const res = await fetch(`https://www.omdbapi.com/?apikey=44d65228&t=${title}`)
             const data = await res.json()
 
             loadedMovies.push(data)
