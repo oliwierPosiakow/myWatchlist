@@ -56,49 +56,39 @@ const fetchMovies = async () => {
         contentEl.innerHTML = `<div class='no-results'><p>Unable to find what you’re looking for. Please try another search.</p></div>`
     }
 }
-document.querySelector('.search').addEventListener('click',fetchMovies)
-window.addEventListener('keydown', (e)=> {
-    if(e.code === 'Enter' && document.getElementById('input-el').value != ''){
-        fetchMovies(e)
+const addToWatchlist = (e) => {
+    let tempArr = []
+    const addButtons = document.getElementsByClassName('film-btn')
+    const modal = document.querySelector('.modal')
+
+    //swap buttons
+    const targetBtn = Object.values(addButtons).filter(btn => {
+        return btn.dataset.imdb === e.target.dataset.imdb
+    })
+    targetBtn[0].classList.toggle('hidden')
+    targetBtn[1].classList.toggle('hidden')
+    console.log(targetBtn)
+
+    //get and set localStorage
+    const targetMovies = loadedMovies.filter(movie => {
+        return movie.imdbID === e.target.dataset.imdb
+    })
+
+    if(localStorage.getItem('watchlistMovies')){
+        tempArr = JSON.parse(localStorage.getItem('watchlistMovies'))
     }
-})
-
-//add movies to localStorage
-
-document.addEventListener('click', (e)=>{
-    if(e.target.id === 'add-btn'){
-        let tempArr = []
-        const addButtons = document.getElementsByClassName('film-btn')
-        const modal = document.querySelector('.modal')
-
-        //swap buttons
-        const targetBtn = Object.values(addButtons).filter(btn => {
-            return btn.dataset.imdb === e.target.dataset.imdb
-        })
-        targetBtn[0].classList.toggle('hidden')
-        targetBtn[1].classList.toggle('hidden')
-        console.log(targetBtn)
-
-        //get and set localStorage
-        const targetMovies = loadedMovies.filter(movie => {
-            return movie.imdbID === e.target.dataset.imdb
-        })
-
-        if(localStorage.getItem('watchlistMovies')){
-            tempArr = JSON.parse(localStorage.getItem('watchlistMovies'))
-        }
-        tempArr.push(targetMovies[0])
-        localStorage.setItem('watchlistMovies',JSON.stringify(tempArr))
+    tempArr.push(targetMovies[0])
+    localStorage.setItem('watchlistMovies',JSON.stringify(tempArr))
 
 
-        //fire modal
+    //fire modal
+    modal.classList.toggle('modal-animation')
+    setTimeout(()=>{
         modal.classList.toggle('modal-animation')
-        setTimeout(()=>{
-            modal.classList.toggle('modal-animation')
-        },3000)
-    }
-    if(e.target.id === 'remove-btn'){
-        const addButtons = document.getElementsByClassName('film-btn')
+    },3000)
+}
+const removeFromWatchlist = (e) => {
+    const addButtons = document.getElementsByClassName('film-btn')
         const targetBtn = Object.values(addButtons).filter(btn => {
             return btn.dataset.imdb === e.target.dataset.imdb
         })
@@ -111,5 +101,24 @@ document.addEventListener('click', (e)=>{
             return movie.imdbID != e.target.dataset.imdb
         })
         localStorage.setItem('watchlistMovies', JSON.stringify(newArr))
+}
+
+
+document.querySelector('.search').addEventListener('click',fetchMovies)
+
+window.addEventListener('keydown', (e)=> {
+    if(e.code === 'Enter' && document.getElementById('input-el').value != ''){
+        fetchMovies(e)
+    }
+})
+
+
+//add movies to localStorage
+document.addEventListener('click', (e)=>{
+    if(e.target.id === 'add-btn'){
+        addToWatchlist(e)
+    }
+    if(e.target.id === 'remove-btn'){
+        removeFromWatchlist(e)
     }
 })
