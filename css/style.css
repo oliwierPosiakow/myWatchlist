@@ -8,7 +8,6 @@ body {
   min-width: 280px;
   margin: 0;
   background-color: #121212;
-  position: relative;
 }
 
 header {
@@ -66,10 +65,11 @@ div.modal i {
 main {
   background: #121212;
   min-height: 70vh;
+  position: relative;
 }
 main .searchbar {
   position: absolute;
-  top: 235px;
+  top: -15px;
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
